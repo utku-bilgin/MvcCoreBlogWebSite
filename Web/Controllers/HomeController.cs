@@ -1,4 +1,5 @@
-﻿using DAL.Abstract;
+﻿using BLL.Abstract.IServices;
+using DAL.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Web.Models;
@@ -8,24 +9,19 @@ namespace Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        private readonly IUserRepo _userRepo;
-
-        public HomeController(ILogger<HomeController> logger, IUserRepo userRepo)
+        private readonly IArticleService articleService;
+        
+        public HomeController(ILogger<HomeController> logger, IArticleService articleService)
         {
             _logger = logger;
-
-            _userRepo = userRepo;
+            this.articleService = articleService;
         }
 
 
-
-
-
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var article = await articleService.GetAllArticleAsync();
+            return View(article);
         }
 
         public IActionResult Privacy()

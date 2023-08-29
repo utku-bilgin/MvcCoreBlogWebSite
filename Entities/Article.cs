@@ -15,9 +15,10 @@ namespace Entities
         public int ViewCount { get; set; }
 
         public Category Category { get; set; }
-        public int CategoryId { get; set; }
+        public Guid CategoryId { get; set; }
 
         public Image Image { get; set; }
-        public int ImageId { get; set; }
+        public Guid ImageId { get; set; }
+
     }
 }

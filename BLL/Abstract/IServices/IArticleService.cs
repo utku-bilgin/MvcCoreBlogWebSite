@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Models.DTOs.Articles;
 
 namespace BLL.Abstract.IServices
 {
     public interface IArticleService
     {
+        Task<List<ArticleDTo>> GetAllArticleAsync();
     }
 }

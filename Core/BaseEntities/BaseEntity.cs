@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Core.BaseEntities
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity : IBaseEntity
     {
-        public int Id { get; set; }
+        public virtual Guid Id { get; set; }
 
 
         public virtual string? CreatedBy { get; set; }

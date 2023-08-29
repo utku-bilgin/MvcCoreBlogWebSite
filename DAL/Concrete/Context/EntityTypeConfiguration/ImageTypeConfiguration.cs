@@ -13,13 +13,13 @@ namespace DAL.Concrete.Context.EntityTypeConfiguration
     {
         public void Configure(EntityTypeBuilder<Image> builder)
         {
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id)
-                   .UseIdentityColumn(1, 1);
+            //builder.HasKey(x => x.Id);
+            //builder.Property(x => x.Id)
+            //       .UseIdentityColumn(1, 1);
             builder.HasData(
                 new Image
                 {
-                    Id = 1,
+                    Id = Guid.Parse("659E7A9F-96E8-4B89-9A9A-6C27DE62A083"),
                     FileName = "images/testimage",
                     FileType = "jpg",
                     CreatedBy = "Admin test",
@@ -28,7 +28,7 @@ namespace DAL.Concrete.Context.EntityTypeConfiguration
                 },
                 new Image
                 {
-                    Id = 2,
+                    Id = Guid.Parse("9324BE78-0522-499F-97A2-BC8B5AF88ABC"),
                     FileName = "images/vstest",
                     FileType = "png",
                     CreatedBy = "Admin test",
