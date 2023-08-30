@@ -8,7 +8,7 @@ namespace Core.BaseEntities
 {
     public abstract class BaseEntity : IBaseEntity
     {
-        public virtual Guid Id { get; set; }
+        public virtual Guid Id { get; set; } = Guid.NewGuid();
 
 
         public virtual string? CreatedBy { get; set; }

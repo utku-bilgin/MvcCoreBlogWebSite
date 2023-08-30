@@ -4,6 +4,8 @@ namespace BLL.Abstract.IServices
 {
     public interface IArticleService
     {
-        Task<List<ArticleDTo>> GetAllArticleAsync();
+        Task<List<ArticleDTo>> GetAllArticleWithCategoryNonDeletedAsync();
+
+        Task CreateArticleAsync(ArticleAddDTo articleAddDTo);
     }
 }

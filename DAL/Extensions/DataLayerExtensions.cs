@@ -8,19 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DAL.Extensions
 {
-    //public static class DataLayerExtensions
-    //{
-    //    public static IServiceCollection LoadDataLayerExtension(this IServiceCollection services, IConfiguration config)
-    //    {
-    //        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-    //        services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(config.GetConnectionString("DefaultConnection")));
-
-    //        //dependency injection
-    //        services.AddScoped<IUnitOfWork, UnitOfWork>();
-    //        return services;
-    //    }
-    //}
-
     public static class DataLayerExtensions
     {
         public static IServiceCollection LoadDataLayerExtension(this IServiceCollection services, IConfiguration config)

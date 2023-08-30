@@ -22,7 +22,7 @@ namespace DAL.Concrete.Context.EntityTypeConfiguration
                     Id = Guid.Parse("659E7A9F-96E8-4B89-9A9A-6C27DE62A083"),
                     FileName = "images/testimage",
                     FileType = "jpg",
-                    CreatedBy = "Admin test",
+                    CreatedBy = Guid.Parse("8C2DE2A2-9825-4626-BA41-43D0661F5E62").ToString(),
                     CreatedDate = DateTime.Now,
                     IsDeleted = false,
                 },
@@ -31,7 +31,7 @@ namespace DAL.Concrete.Context.EntityTypeConfiguration
                     Id = Guid.Parse("9324BE78-0522-499F-97A2-BC8B5AF88ABC"),
                     FileName = "images/vstest",
                     FileType = "png",
-                    CreatedBy = "Admin test",
+                    CreatedBy = Guid.Parse("8C2DE2A2-9825-4626-BA41-43D0661F5E62").ToString(),
                     CreatedDate = DateTime.Now,
                     IsDeleted = false,
                 }

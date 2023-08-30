@@ -9,18 +9,18 @@ namespace Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IArticleService articleService;
+        private readonly IArticleService _articleService;
         
         public HomeController(ILogger<HomeController> logger, IArticleService articleService)
         {
             _logger = logger;
-            this.articleService = articleService;
+            _articleService = articleService;
         }
 
 
         public async Task<IActionResult> Index()
         {
-            var article = await articleService.GetAllArticleAsync();
+            var article = await _articleService.GetAllArticleWithCategoryNonDeletedAsync();
             return View(article);
         }
 

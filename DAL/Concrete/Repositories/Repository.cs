@@ -8,17 +8,17 @@ namespace DAL.Concrete.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class, IBaseEntity, new()
     {
-        private readonly AppDbContext dbContext;
+        private readonly AppDbContext _dbContext;
 
         public Repository(AppDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         /// <summary>
         /// DbContex set işlemini Table a atadık, 
         /// </summary>
-        private DbSet<T> Table { get => dbContext.Set<T>(); }
+        private DbSet<T> Table { get => _dbContext.Set<T>(); }
 
         public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includeProperties)
         {

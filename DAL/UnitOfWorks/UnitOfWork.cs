@@ -6,29 +6,29 @@ namespace DAL.UnitOfWorks
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext dbContext;
+        private readonly AppDbContext _dbContext;
         public UnitOfWork(AppDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            _dbContext = dbContext;
         }
         public async ValueTask DisposeAsync()
         {
-            await dbContext.DisposeAsync();
+            await _dbContext.DisposeAsync();
         }
 
         public int Save()
         {
-            return dbContext.SaveChanges();
+            return _dbContext.SaveChanges();
         }
 
         public async Task<int> SaveAsync()
         {
-            return await dbContext.SaveChangesAsync();
+            return await _dbContext.SaveChangesAsync();
         }
 
         IRepository<T> IUnitOfWork.GetRepository<T>()
         {
-            return new Repository<T>(dbContext);
+            return new Repository<T>(_dbContext);
         }
     }
 }
