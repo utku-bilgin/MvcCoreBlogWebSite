@@ -6,6 +6,12 @@ namespace BLL.Abstract.IServices
     {
         Task<List<ArticleDTo>> GetAllArticleWithCategoryNonDeletedAsync();
 
+        Task<ArticleDTo> GetArticleWithCategoryNonDeletedAsync(Guid articleId);
+
         Task CreateArticleAsync(ArticleAddDTo articleAddDTo);
+
+        Task<string> UpdateArticleAsync(ArticleUpdateDTo articleUpdateDTo);
+
+        Task<string> SafeDeleteArticleAsync(Guid articleId);
     }
 }

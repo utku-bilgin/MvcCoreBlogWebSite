@@ -12,6 +12,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="NToastNotify" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +22,14 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\article-images\aaaaaa_735.webp" />
+    <None Include="wwwroot\images\article-images\bbbbb_638.webp" />
+    <None Include="wwwroot\images\article-images\img_355.webp" />
+    <None Include="wwwroot\images\article-images\magedeneme_427.webp" />
+    <None Include="wwwroot\images\article-images\ResimDeneme2_652.png" />
   </ItemGroup>
 
 </Project>

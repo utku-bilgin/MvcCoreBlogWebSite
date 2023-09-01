@@ -10,6 +10,19 @@ namespace Entities
 {
     public class Article : BaseEntity
     {
+        public Article()
+        {
+
+        }
+
+        public Article(string title, string content, Guid categortId, Guid imageId)
+        {
+            Title = title;
+            Content = content;
+            CategoryId = categortId;
+            ImageId = imageId;
+        }
+
         public string Title { get; set; }
         public string Content { get; set; }
         public int ViewCount { get; set; } = 0;
