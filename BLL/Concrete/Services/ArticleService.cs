@@ -60,7 +60,7 @@ namespace BLL.Concrete.Services
 
         public async Task<ArticleDTo> GetArticleWithCategoryNonDeletedAsync(Guid articleId)
         {
-            var article = await _unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleId, x => x.Category);
+            var article = await _unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleId, x => x.Category, i => i.Image);
             var map = _mapper.Map<ArticleDTo>(article);
 
             return map;
@@ -68,7 +68,18 @@ namespace BLL.Concrete.Services
 
         public async Task<string> UpdateArticleAsync(ArticleUpdateDTo articleUpdateDTo)
         {
-            var article = await _unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleUpdateDTo.Id, x => x.Category, i=>i.Image);
+            var userEmail = _user.GetLoggedInEmail();
+            var article = await _unitOfWork.GetRepository<Article>().GetAsync(x => !x.IsDeleted && x.Id == articleUpdateDTo.Id, x => x.Category, i => i.Image);
+
+            if(articleUpdateDTo.Photo != null)
+            {
+                _imageHelper.Delete(article.Image.FileName);
+
+                var imageUpload = await _imageHelper.Upload(articleUpdateDTo.Title, articleUpdateDTo.Photo, ImageType.Post);
+                Image image = new(imageUpload.FullName, articleUpdateDTo.Photo.ContentType, userEmail);
+                await _unitOfWork.GetRepository<Image>().AddAsync(image);
+                article.ImageId = image.Id;
+;            }
 
             article.Title = articleUpdateDTo.Title;
             article.Content = articleUpdateDTo.Content;

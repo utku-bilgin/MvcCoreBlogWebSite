@@ -30,19 +30,19 @@ namespace Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var articles = await _articleService.GetAllArticleWithCategoryNonDeletedAsync();
-            //var userIds = articles.Select(article => Guid.Parse(article.CreatedBy)).ToList();
-            //var users = await _userManager.Users.Where(user => userIds.Contains(user.Id)).ToListAsync();
-
-            ////Article'ların CreatedBy bilgisine UserName ı eşitle
-            //foreach (var article in articles)
-            //{
-            //    var user = users.FirstOrDefault(u => u.Id.ToString() == article.CreatedBy);
-            //    if (user != null)
-            //    {
-            //        article.CreatedBy = user.UserName;
-            //    }
-            //}
+            
             return View(articles);
+        }
+
+        public async Task<IActionResult> Detail(Guid articleId)
+        {
+            var article = await _articleService.GetArticleWithCategoryNonDeletedAsync(articleId);
+            var categories = await _categoryService.GetAllCategoriesNonDeleted();
+
+            var articleDetailDTo = _mapper.Map<ArticleDetailDTo>(article);
+            articleDetailDTo.Categories = categories;
+
+            return View(articleDetailDTo);
         }
 
         [HttpGet]
@@ -102,6 +102,7 @@ namespace Web.Areas.Admin.Controllers
             return RedirectToAction("Index", "Article", new { Area = "Admin" });
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(Guid articleId)
         {
             await _articleService.SafeDeleteArticleAsync(articleId);

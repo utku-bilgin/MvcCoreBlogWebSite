@@ -12,7 +12,6 @@ namespace Models.DTOs.Articles
     public class ArticleAddDTo
     {
         [Required(ErrorMessage = "Başlık alanı boş bırakmayınız")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Başlık min 3 max 50 karakterden oluşmalıdır")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "İçerik alanı boş bırakmayınız")]

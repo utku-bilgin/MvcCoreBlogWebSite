@@ -14,6 +14,8 @@ namespace BLL.Concrete.Mapper.Categories
         public CategoryProfile()
         {
             CreateMap<CategoryDTo, Category>().ReverseMap();
+            CreateMap<CategoryAddDTo, Category>().ReverseMap();
+            CreateMap<CategoryUpdateDTo, Category>().ReverseMap();
         }
     }
 }

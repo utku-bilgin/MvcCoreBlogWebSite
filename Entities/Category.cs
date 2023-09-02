@@ -11,9 +11,10 @@ namespace Entities
     {
         
 
-        public Category(string name)
+        public Category(string name, string createdBy)
         {
             Name = name;
+            CreatedBy = createdBy;
         }
 
         public string Name { get; set; }

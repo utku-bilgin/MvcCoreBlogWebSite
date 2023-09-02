@@ -12,6 +12,7 @@ namespace BLL.Concrete.Mapper.Articles
             CreateMap<ArticleUpdateDTo, Article>().ReverseMap();
             CreateMap<ArticleUpdateDTo, ArticleDTo>().ReverseMap();
             CreateMap<ArticleAddDTo, Article>().ReverseMap();
+            CreateMap<ArticleDTo, ArticleDetailDTo>().ReverseMap();
         }
     }
 }

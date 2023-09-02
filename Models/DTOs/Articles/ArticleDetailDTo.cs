@@ -4,7 +4,7 @@ using Models.DTOs.Categories;
 
 namespace Models.DTOs.Articles
 {
-    public class ArticleUpdateDTo
+    public class ArticleDetailDTo
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -13,6 +13,5 @@ namespace Models.DTOs.Articles
         public IList<CategoryDTo> Categories { get; set; }
 
         public Image Image { get; set; }
-        public IFormFile? Photo { get; set; }
     }
 }
